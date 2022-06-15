@@ -11,6 +11,8 @@
     <color name="layout_background">#090f32</color>
     <color name="header">#10163b</color>
     <color name="cards">#272a4e</color>
+    <color name="results">#090c22</color>
+    <color name="board">#1d1f33</color>
 
     <color name="highlighting_color">#01ca01</color>
 

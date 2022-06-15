@@ -19,37 +19,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.004">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="BMI Machine"
-                android:textAlignment="center"
-                android:textColor="@color/mainFont_color"
-                android:textSize="30dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.069"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.466" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-
-                android:layout_height="match_parent"
-                tools:layout_editor_absoluteX="36dp"
-                tools:layout_editor_absoluteY="-53dp">
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:text="BMI Machine"
+            android:textAlignment="center"
+            android:textColor="@color/mainFont_color"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            app:layout_constraintHorizontal_bias="0.069"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.466" />
 
 
     </androidx.cardview.widget.CardView>
@@ -58,6 +40,8 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="150dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="15dp"
         android:layout_height="150dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
@@ -70,8 +54,10 @@
         app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/femaleCard"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:elevation="15dp">
 
             <ImageView
                 android:id="@+id/femaleimage"
@@ -107,6 +93,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="150dp"
         android:layout_height="150dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="15dp"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
@@ -121,6 +109,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/maleCard"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -185,21 +174,41 @@
                 app:layout_constraintVertical_bias="0.187" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/textViewHeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="180cm"
+                android:text="@string/height"
                 android:textColor="@color/highlighting_color"
                 android:textSize="22dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.468"
+                app:layout_constraintHorizontal_bias="0.417"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView"
-                app:layout_constraintVertical_bias="0.212" />
+                app:layout_constraintVertical_bias="0.247" />
+
+            <TextView
+                android:id="@+id/height_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:text="cm"
+                android:textColor="@color/highlighting_color"
+
+                android:textSize="26sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/textViewHeight"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.484" />
 
             <SeekBar
+                android:id="@+id/heightSeekbar"
                 android:layout_width="152dp"
                 android:layout_height="wrap_content"
 
@@ -208,7 +217,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2"
+                app:layout_constraintTop_toBottomOf="@+id/textViewHeight"
                 app:layout_constraintVertical_bias="0.261" />
 
 
@@ -219,6 +228,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView4"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="15dp"
         android:layout_width="150dp"
         android:layout_height="160dp"
         android:layout_alignParentEnd="true"
@@ -251,14 +262,49 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="80"
+                android:id="@+id/weightNumber"
+                android:layout_marginTop="15dp"
                 android:textColor="@color/mainFont_color"
                 android:textSize="30dp"
+                android:text="@string/weight"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/weight" />
+
+            <ImageButton
+                android:id="@+id/weightAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="2dp"
+                android:backgroundTint="@color/cards"
+                android:clickable="true"
+                android:focusable="true"
+
+                android:src="@drawable/ic_plus_round"
+                android:textColor="@color/mainFont_color"
+                app:layout_constraintEnd_toStartOf="@+id/weightSubtract"
+                app:layout_constraintHorizontal_bias="0.47"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/weightNumber" />
+
+            <ImageButton
+                android:id="@+id/weightSubtract"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/cards"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/ic_minus_sign"
+                android:textColor="@color/mainFont_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.833"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/weightNumber"
+                app:layout_constraintVertical_bias="0.529" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -269,6 +315,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="150dp"
         android:layout_height="160dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="15dp"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
@@ -300,14 +348,49 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="20"
+                android:id="@+id/ageNumber"
+                android:layout_marginTop="15dp"
+                android:text="@string/age"
                 android:textColor="@color/mainFont_color"
                 android:textSize="30dp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/age" />
+
+            <ImageButton
+                android:id="@+id/ageAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="2dp"
+                android:backgroundTint="@color/cards"
+                android:clickable="true"
+                android:focusable="true"
+
+                android:src="@drawable/ic_plus_round"
+                android:textColor="@color/mainFont_color"
+                app:layout_constraintEnd_toStartOf="@+id/ageSubtract"
+                app:layout_constraintHorizontal_bias="0.47"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ageNumber" />
+
+            <ImageButton
+                android:id="@+id/ageSubtract"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/cards"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/ic_minus_sign"
+                android:textColor="@color/mainFont_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.833"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ageNumber"
+                app:layout_constraintVertical_bias="0.529" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -316,7 +399,7 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_result"
         android:layout_width="405dp"
         android:layout_height="71dp"
 
