@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">BMI</string>
-    <string name="weight">80</string>
-    <string name="age">20</string>
+
+
     <string name="results">20.1</string>
     <string name="result_normal">Normal</string>
     <string name="height">180</string>

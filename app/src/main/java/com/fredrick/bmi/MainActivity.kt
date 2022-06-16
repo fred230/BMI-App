@@ -7,9 +7,13 @@ import android.widget.ImageButton
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var viewModel: MainViewModel
 
     var maxHeight: Int = 230
 
@@ -19,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         //textviews
         val seekbar: SeekBar = findViewById(R.id.heightSeekbar)
@@ -36,11 +40,27 @@ class MainActivity : AppCompatActivity() {
         val btn: Button = findViewById(R.id.button_result)
 
         //variables
-        var weight: Int = getString(R.string.weight).toInt()
-        var age: Int = getString(R.string.age).toInt()
+        var weight = 0
+        var age = 0
         var height: Int = getString(R.string.height).toInt()
-        seekbar.setMax(maxHeight)
 
+
+        //initialize
+        weightTextView.text = viewModel.weight.toString()
+
+
+        //livedata for age
+        viewModel.age.observe(this, Observer {
+            ageTextView.text = it.toString()
+        })
+
+        viewModel.weight.observe(this, Observer {
+            weightTextView.text = it.toString()
+        })
+
+
+
+        seekbar.setMax(maxHeight)
         seekbar.setProgress(height)
 
 
@@ -70,37 +90,31 @@ class MainActivity : AppCompatActivity() {
         //onclick listerner on Weight
 
         addWeightBtn.setOnClickListener {
-
-
-            weightTextView.text = weight++.toString()
+            viewModel.updateWeightAdd()
 
         }
 
         subtractWeightBtn.setOnClickListener {
-
-            weightTextView.text = weight--.toString()
+            viewModel.updateWeightSubtract()
         }
 
 
         //onclick listerner on Age
 
         addAgeBtn.setOnClickListener {
-
-
-            ageTextView.text = age++.toString()
+            viewModel.updateAgeAdd()
 
         }
 
         subtractAgeBtn.setOnClickListener {
-
-            ageTextView.text = age--.toString()
+            viewModel.updateAgeSubtract()
         }
 
         //onclick listerner on results button
 
         btn.setOnClickListener {
 
-            fun divide(a: Double, b: Double): Double {
+            fun divide(a: Int, b: Double): Double {
                 return a / b
             }
 
@@ -108,8 +122,8 @@ class MainActivity : AppCompatActivity() {
                 return (a / 100) * (a / 100)
             }
 
-
-            bmi = divide(weight.toDouble(), multiply(height.toDouble()))
+            weight = viewModel.weight.toString().toInt()
+            bmi = divide(weight, multiply(height.toDouble()))
 
 
             val intent = Intent(this, ResultsActivity::class.java)
